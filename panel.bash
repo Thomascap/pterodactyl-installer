@@ -84,7 +84,7 @@ chown -R www-data:www-data /var/www/pterodactyl/*
 cronjob="* * * * * php /var/www/pterodactyl/artisan schedule:run >> /dev/null 2>&1"
 (crontab -u root -l; echo "$cronjob" ) | crontab -u root -
 # Create Queue Worker
-curl -o /etc/systemd/system/pteroq.service https://raw.githubusercontent.com/Thomascap/ptero/main/pteroq.service
+curl -o /etc/systemd/system/pteroq.service https://raw.githubusercontent.com/Thomascap/pterodactyl-installer/main/pteroq.service
 sudo systemctl enable --now redis-server
 sudo systemctl enable --now pteroq.service
 
@@ -108,10 +108,10 @@ fi
 # Webserver Configuration
 # -----------------------
 if [ "$USE_SSL" == true ]; then
-curl -o /etc/nginx/sites-available/pterodactyl.conf https://raw.githubusercontent.com/Thomascap/ptero/main/pterodactyl.conf
+curl -o /etc/nginx/sites-available/pterodactyl.conf https://raw.githubusercontent.com/Thomascap/pterodactyl-installer/main/pterodactyl-ssl.conf
 sed -i -e "s/<domain>/${FQDN}/g" /etc/nginx/sites-available/pterodactyl.conf
 elif [ "$USE_SSL" == false ]; then
-curl -o /etc/nginx/sites-available/pterodactyl.conf https://raw.githubusercontent.com/Thomascap/ptero/main/pterodactyl.conf
+curl -o /etc/nginx/sites-available/pterodactyl.conf https://raw.githubusercontent.com/Thomascap/pterodactyl-installer/main/pterodactyl.conf
 sed -i -e "s/<domain>/${FQDN}/g" /etc/nginx/sites-available/pterodactyl.conf
 fi
 # Enabling Configuration
