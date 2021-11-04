@@ -101,7 +101,7 @@ sudo apt install -y certbot
 sudo apt install -y python3-certbot-nginx
 # Creating a Certificate
 if [ "$USE_SSL" == true ]; then
-certbot certonly -d ${FQDN} --standalone --agree-tos -m ${EMAIL}
+certbot certonly -d ${FQDN} --standalone --agree-tos --register-unsafely-without-email
 elif [ "$USE_SSL" == false ]; then
 echo ""
 fi
