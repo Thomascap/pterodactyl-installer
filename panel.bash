@@ -5,15 +5,15 @@ URL="http://${FQDN}"
 USE_SSL=false
 EMAIL="pterodactyl@mynode.nl"
 MYSQL_USER="pterodactyl"
-MYSQL_PASSWORD=$wachtwoord
+MYSQL_PASSWORD="rwbAiPZ3iv"
 MYSQL_DATABASE="panel"
 MYSQL_USER_PANEL="pterodactyl"
-MYSQL_PASSWORD_PANEL=$wachtwoord
+MYSQL_PASSWORD_PANEL="rwbAiPZ3iv"
 USER_EMAIL="admin@gmail.com"
 USER_USERNAME="admin"
 USER_FIRSTNAME="admin"
 USER_LASTNAME="admin"
-USER_PASSWORD=$wachtwoord
+USER_PASSWORD="rwbAiPZ3iv"
 
 # Pas alle url's aan
 
