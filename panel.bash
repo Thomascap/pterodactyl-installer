@@ -1,8 +1,8 @@
 apt update
 
-FQDN=`hostname --ip-address`
+FQDN="pterodactyl.mynode.nl"
 URL="http://${FQDN}"
-USE_SSL=false
+USE_SSL=yes
 EMAIL="pterodactyl@mynode.nl"
 MYSQL_USER="pterodactyl"
 MYSQL_PASSWORD="rwbAiPZ3iv"
