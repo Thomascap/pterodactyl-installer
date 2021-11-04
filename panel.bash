@@ -92,6 +92,7 @@ sudo systemctl enable --now pteroq.service
 # ----------------------
 systemctl stop apache2
 apt -y remove apache2
+systemctl stop nginx
 
 # Creating SSL Certificates
 # -------------------------
