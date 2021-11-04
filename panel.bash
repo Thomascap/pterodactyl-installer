@@ -1,8 +1,7 @@
 apt update
 
 FQDN="pterodactyl.mynode.nl"
-URL="http://${FQDN}"
-USE_SSL=yes
+USE_SSL=false
 EMAIL="pterodactyl@mynode.nl"
 MYSQL_USER="pterodactyl"
 MYSQL_PASSWORD="rwbAiPZ3iv"
@@ -14,6 +13,23 @@ USER_USERNAME="admin"
 USER_FIRSTNAME="admin"
 USER_LASTNAME="admin"
 USER_PASSWORD="rwbAiPZ3iv"
+
+echo "On which domain name should this panel be installed? (FQDN)"
+read FQDN
+echo "Do you want SSL on this domain? (IPs cannot have SSL!) (y/n)"
+read USE_SSL_CHOICE
+if [ "$USE_SSL_CHOICE" == "y" ]; then
+    USE_SSL=true
+elif [ "$USE_SSL_CHOICE" == "Y" ]; then
+    USE_SSL=true
+elif [ "$USE_SSL_CHOICE" == "n" ]; then 
+    USE_SSL=false
+elif [ "$USE_SSL_CHOICE" == "N" ]; then 
+    USE_SSL=false
+else
+    echo "Answer not found, no SSL will be used."
+    USE_SSL=false
+fi
 
 # Pas alle url's aan
 
