@@ -54,7 +54,7 @@ mysql -u root -e "CREATE USER '${MYSQL_USER_PANEL}'@'127.0.0.1' IDENTIFIED BY '$
 mysql -u root -e "GRANT ALL PRIVILEGES ON *.* TO '${MYSQL_USER_PANEL}'@'127.0.0.1' WITH GRANT OPTION;"
 mysql -u root -e "FLUSH PRIVILEGES;"
 cp .env.example .env
-composer install --no-dev --optimize-autoloader
+y | composer install --no-dev --optimize-autoloader
 php artisan key:generate --force
 
 # Environment Configuration
