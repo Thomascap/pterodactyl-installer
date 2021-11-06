@@ -6,7 +6,7 @@ EMAIL="pterodactyl@mynode.nl"
 MYSQL_USER="pterodactyl"
 MYSQL_PASSWORD="rwbAiPZ3iv"
 MYSQL_DATABASE="panel"
-MYSQL_USER_PANEL="pterodactyl"
+MYSQL_USER_PANEL="pterodactyluser"
 MYSQL_PASSWORD_PANEL="rwbAiPZ3iv"
 USER_EMAIL="admin@gmail.com"
 USER_USERNAME="admin"
@@ -69,6 +69,10 @@ mysql -u root -e "GRANT ALL PRIVILEGES ON ${MYSQL_DATABASE}.* TO '${MYSQL_USER}'
 mysql -u root -e "CREATE USER '${MYSQL_USER_PANEL}'@'127.0.0.1' IDENTIFIED BY '${MYSQL_PASSWORD_PANEL}';"
 mysql -u root -e "GRANT ALL PRIVILEGES ON *.* TO '${MYSQL_USER_PANEL}'@'127.0.0.1' WITH GRANT OPTION;"
 mysql -u root -e "FLUSH PRIVILEGES;"
+sed -i -e "s/127.0.0.1/0.0.0.0/g" /etc/mysql/my.cnf
+sed -i -e "s/127.0.0.1/0.0.0.0/g" /etc/mysql/mariadb.conf.d/50-server.cnf
+systemctl restart mysql
+systemctl restart mysqld
 cp .env.example .env
 y | composer install --no-dev --optimize-autoloader
 php artisan key:generate --force
