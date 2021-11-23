@@ -15,6 +15,21 @@ else
     echo "Answer not found, no SSL will be used."
     USE_SSL=false
 fi
+# Stopping some services
+# ----------------------
+systemctl stop apache2
+systemctl stop nginx
+# Creating SSL Certificates
+# -------------------------
+sudo apt update
+sudo apt install -y certbot
+sudo apt install -y python3-certbot-nginx
+# Creating a Certificate
+if [ "$USE_SSL" == true ]; then
+certbot certonly -d ${FQDN} --standalone --agree-tos --register-unsafely-without-email
+elif [ "$USE_SSL" == false ]; then
+echo ""
+fi
 # Change the ipv4 in the database
 # -------------------------------
 mysql -u root -e "UPDATE panel.allocations SET ip = '${IP}' WHERE node_id = 1"
