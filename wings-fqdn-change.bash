@@ -50,3 +50,4 @@ fi
 # Restart the wings
 # -------------------------------
 systemctl restart wings
+systemctl restart nginx
