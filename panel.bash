@@ -46,7 +46,12 @@ apt update
 # Add universe repository if you are on Ubuntu 18.04
 apt-add-repository universe
 # Install Dependencies
+clear
+sleep 20
+echo "php install"
 apt -y install php8.0 php8.0-{cli,gd,mysql,pdo,mbstring,tokenizer,bcmath,xml,fpm,curl,zip} mariadb-server nginx tar unzip git redis-server
+sleep 20
+echo "php install done"
 
 # Installing Composer
 # -------------------
